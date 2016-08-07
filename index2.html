@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Organizador</title>
+    <link rel="stylesheet" type="text/css" href="./css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="stylesheet" href="./css/jquery-ui.theme.css">
+</head>
+<body>
+
+   <div class="containerMaster">
+        <div class="header">
+            <div>
+             <h1>Organizador de Proyectos</h1>
+            </div>
+              <hr>
+        </div>
+            <div id="flip"><h6><monospace>Área de espera</monospace></h6>
+            </div>
+                <div  id="panel" class="areaes">
+               
+                </div>
+   
+        <div id="contdrop" class=" containerstyle">
+        </div>
+	
+    <div id="menu" class="clickderecho">
+      <ul class="ulclickderecho">
+        <li id="crearproyecto" class="liclickderecho">Crear Proyecto</li>
+        <li id="crearpersona" class="liclickderecho">Crear Persona</li>
+      </ul>
+    </div>
+ 
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+           <h4>Digite el Nombre del Proyecto</h4>
+           <input type="text" name="" class="texto">
+        </div>
+        <div class="modal-footer">
+         <button  class=" modal-action modal-close waves-effect waves-green btn-flat crearp" id="btnagregar">Agregar</button> 
+        </div>
+    </div>
+    
+    <div id="modal2" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4>Digite el Nombre de la Persona</h4>
+        <input type="text" name="" class="text">
+      </div>
+       <div class="modal-footer">
+         <button  class=" modal-action modal-close waves-effect waves-green btn-flat crearP" id="btnagregar">Agregar</button> 
+       </div>
+    </div>
+    <div id="modal3" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4>Digite el nuevo nombre</h4>
+        <input type="text" name="" class="text3">
+      </div>
+       <div class="modal-footer">
+         <button  class=" modal-action modal-close waves-effect waves-green btn-flat aditar" id="btnaceptar">Aceptar</button> 
+       </div>
+    </div>
+    </div>
+
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   --><script src="./js/jquery.min.js"></script> 
+   <script src="./js/materialize.js"></script>
+ <script type="text/javascript"  src="./js/drad_and-Drop.js"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+  <script src="./js/init.js"></script>
+  <script type="text/javascript" src="./js/script.js"></script>
+  <script type="text/javascript" src="./js/drad_and-Drop.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.ulclickderecho {
+    list-style: none;
+    list-style-type: none;
+    list-style-position: outside;
+    margin-left: -40px;
+}
+.liclickderecho {
+    line-height: 64px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.4s;
+    margin-top: -14px;
+}
+.clickderecho {
+    width: 165px;
+    position: absolute;
+    box-shadow: 0 0 5px #888;
+    border-radius: .28571429rem;
+    height: 114px;
+}
+.div_proyecto{
+    color: white;
+	border-radius: 15px;
+    background-color: #a9acad;
+    height: 200px;
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.div_persona{
+	
+	color: black;
+	border-radius: 15px;
+    background-color: rgba(119, 92, 92, 0.65);
+    height: 90px;
+    width: 150px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.delete{
+   background-image: url("../imagen/delete.png"); 
+    height: 20px;
+    width: 22px;
+    border-radius: 3px;
+}
+.edit{
+    background-image: url("../imagen/edit.png"); 
+    height: 20px;
+    width: 22px;
+    border-radius: 3px;
+}
+.headerdivP{
+	text-align: center;
+	width: 100%;
+	color: white;
+	background-color:rgba(157, 165, 169, 0.77);  
+	height: 20px;
+    border-radius: 7px;
+}
+
+	
+.header{
+	text-align: center;
+	width: 100%;
+	color: white;
+	background-color:#29b6f6;  
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerMaster{
+    width: 1367px;
+
+}
+.containerstyle{
+height: 600px;
+width: 1300px;
+}
+.contProyecto {
+   font-size: 10px;
+   font-weight: bold;
+    
+    width: 700px;
+    height: 100px;
+    background-color: #1a6486;
+    /* border-radius: 15px; */
+}
+.styles {
+    position: absolute;
+    top: 125.688px;
+    left: 350.719px;
+    opacity: 1;
+    display: block;
+ 
+    }
+  #panel, #flip {
+    padding: 1px;
+    margin: 1px;
+    text-align: center;
+    background-color: #467ca7;
+    border: solid 2px #3b718a;
+    color: white;
+}
+ 
+#panel {
+    padding: 50px;
+    display: none;
+}
