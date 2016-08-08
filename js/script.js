@@ -42,13 +42,15 @@ $('.crearp').click(function(evento){
   	alert('Debe escribir un nombre');
   }else{
   	if ($('.'+proyecto+'').length === 0) {
-    $('.container').append('<div id="dp" class="div_proyecto ui-corner-all ui-state-highlight  '+proyecto+'" ></div>');
+    $('.containerstyle').append('<div id="dp" class="div_proyecto   '+proyecto+'" ></div>');
   	$('.'+proyecto+'').append('<button id="'+proyecto+'" class="delete "></button>');
     $('.'+proyecto+'').append('<div id="'+proyecto+'"class="headerdivP" >'+proyecto+'</div>');
     $('.'+proyecto+'').append('<button id="'+proyecto+'" class="edit" ></button>');
     habilitarEdit();
      deletee();
-   
+     drag_drop(''+proyecto+'');
+    // $( '.'+proyecto+'' ).draggable({ containment: "#contdrop", scroll: false });
+
    }else{
       alert("Este proyecto ya Exite");
      }

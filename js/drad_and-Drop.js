@@ -1,9 +1,10 @@
-$(document).ready(function(){
-function drag_drop(){
- $( "#dp" ).draggable({ containment: "#contdrop", scroll: false });
+// $(document).ready(function(){
+
+//  });
+function drag_drop(nom){
+ $('.'+nom+'').draggable({ containment: "#contdrop", scroll: false });
 
 }
- });
 /*drag and drop*/
 
 // $('crearp').click(function(e){
