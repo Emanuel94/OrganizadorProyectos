@@ -1,11 +1,25 @@
 $(document).ready(function() {
-	
-/*realiza la funcion de eliminar y editar los div de personas y proyectos*/
+    var posx;
+    var posy;
+function salvar (div){
+ localStorage.setItem('divPersona', div);
+}
+var person;
+  function cargar(){
+    person= localStorage.getItem('divPersona') || 0;
+        $('#contdrop').append(person);
+
+  }
+  cargar();
+
+ //var divp= localStorage.divPersona;
+
+ 
+  /*realiza la funcion de eliminar y editar los div de personas y proyectos*/
  function habilitarEdit(){
 
 $('.edit').click(function(){
   var nom = $(this).attr("id"); 
-  var nomrespaldo=""; 
   $('#modal3').openModal();
   $('.text3').val(nom);
   
@@ -30,31 +44,44 @@ function CambiaClassCont(nom,nomnew){
 function deletee(){
   $('.delete').click(function(){
   var nompersona = $(this).attr("id"); 
+/*si hay personas los copia al area de espera*/
+  $('.'+nompersona+'').find('.div_persona').appendTo('#panel');
   $('.'+nompersona+'').remove();
-         
-
 });
 }
 /* crea el contairne y demas de los proyectos*/
 
-$('.crearp').click(function(evento){
+$('.crearp').click(function(){
   var proyecto = $('.texto').val();
   if(proyecto===""){
   	alert('Debe escribir un nombre');
   }else{
   	if ($('.'+proyecto+'').length === 0) {
-    $('.containerstyle').append('<div id="dp" class="div_proyecto   '+proyecto+'" ></div>');
+    $('.containerstyle').append('<div id="dp" class="div_proyecto '+proyecto+'" ></div>');
   	$('.'+proyecto+'').append('<button id="'+proyecto+'" class="delete "></button>');
     $('.'+proyecto+'').append('<div id="'+proyecto+'"class="headerdivP" >'+proyecto+'</div>');
     $('.'+proyecto+'').append('<button id="'+proyecto+'" class="edit" ></button>');
+    // aun no se edita
+   $('.'+proyecto+'').append('<div id="conp" ondrop="dropConte(event)" ondragover="dropContP(event)" class="divContPe"></div>');
+     
+     $('.'+proyecto+'').css({
+        'position':'absolute',
+        'left': posx,
+        'top':posy
+     });
     habilitarEdit();
      deletee();
-     drag_drop(''+proyecto+'');
+     dragSelect(); 
+    /*local storage*/
+    var divAtual = document.getElementById('dp');
+    salvar(divAtual);
+
     
    }else{
       alert("Este proyecto ya Exite");
      }
-     clear($('.texto'));
+     $('.texto').val('');
+
     // DragDrop("drop", "drop");
 }
    });
@@ -65,25 +92,20 @@ $('.crearp').click(function(evento){
   	alert('Debe escribir un nombre');
   } else{
      if($('.'+persona+'').length === 0){
-          $('.areaes').append('<div id="drag " class="div_persona  '+persona+'" >'+" "+ '</div>');
+          $('.areaes').append('<div id="dra" draggable=true  ondragstart=" dragStart(event)" class=" div_persona  '+persona+'" >'+" "+ '</div>');
           $('.'+persona+'').append('<button id="'+persona+'" class="delete"></button>'); 
           $('.'+persona+'').append('<div id="'+persona+'" class="headerdivP">'+persona+'</div>');
           $('.'+persona+'').append('<button id="'+persona+'"  class="edit" ></button>');
+          $('.'+persona+'').append('<button  class="move" ></button>');
+
             deletee();
             habilitarEdit();
-           $('#drag').draggable();
         }else{
         	alert("Esta persona ya exite");
         }
-        clear($('.text')); 
-  //DragDrop("drag", "drop");
+     $('.texto').val('');
   }
-  // $('.divproyecto').css({
-     //    'position':'absolute',
-     //    'left': evento.pageX,
-     //    'top':evento.pageY
-     // });
-   
+     
   });
     $('#menu').hide();
     /* mostramos el menú si hacemos click derecho
@@ -93,7 +115,8 @@ $('.crearp').click(function(evento){
             'display': 'block',
             'left': evento.pageX,
             'top': evento.pageY
-        });
+            });   
+       positionProyect(evento.pageX,evento.pageY);
         return false;
     });
     //cuando hagamos click, el menú desaparecerá
@@ -107,13 +130,22 @@ $('.crearp').click(function(evento){
         // El switch utiliza los IDs de los <li> del menú
         switch (e.target.id) {
             case "crearproyecto":
+
                  $('#modal1').openModal();
+                   $('.texto').focus();
+
                  break;
             case "crearpersona":
                 $('#modal2').openModal();
+                $('.text').focus();
                  break;
         }
     });
+  /* obtiene los valores de la posicion */
+function positionProyect(x,y){
+   posx=x;
+   posy=y;
+}
 
 
 /*realiza el desplazamiento de panel*/
@@ -121,12 +153,8 @@ $('.crearp').click(function(evento){
      $('#panel').slideToggle("slow");
     });
   /* limpia el imput del modal*/
-  function clear(selector){
-  	selector.val('');
-  }
-    function focus(selector){
-  	selector.focus();
-}
+ 
+ 
 });
 
 

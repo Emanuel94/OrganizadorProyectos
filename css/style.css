@@ -29,17 +29,23 @@
     height: 114px;
 }
 .div_proyecto{
-    color: white;
+  
 	border-radius: 15px;
     background-color: #a9acad;
-    height: 200px;
-    width: 150px;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    display: flex;
+    height: 260px;
+    width: 169px;
+   border-radius:5px; 
+   display: flex;
     flex-direction: row-reverse;
     
+}
+.divContPe{
+    width: 225px;
+    height: 230px;
+    color: #a9acad;
+    background: #a9acad;
+    margin-top: 23px;
+    margin-right: -159px;
 }
 .div_persona{
 	
@@ -65,6 +71,12 @@
     height: 20px;
     width: 22px;
     border-radius: 3px;
+}
+.move{
+ background-image: url("../imagen/move.png"); 
+   height: 20px;
+    width: 22px;
+    border-radius: 3px;  
 }
 .headerdivP{
 	text-align: center;
