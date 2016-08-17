@@ -1,9 +1,5 @@
 
-// function drag_drop(nom){
 
-//  $('.'+nom+'').draggable({ containment: "#contdrop", scroll: false });
-
-// }
 function dropContP(e){
 e.preventDefault();	
 }
@@ -27,7 +23,7 @@ $( "#contdrop > div" ).draggable({
 	 containment: "#contdrop", scroll: false,
     start: function(ev, ui) {
         if ($(this).hasClass("ui-selected")){
-        	debugger
+        	
             selected = $(".ui-selected").each(function() {
                var el = $(this);
                el.data("offset", el.offset());
@@ -85,21 +81,4 @@ $("#contdrop > div").each( function() {
     i++;
 });
 
-// drop.ondragcenter=  function(){
-// 	alert('s');
-// }
-// ondragover = function(e){
-// //Cancelar el evento que impide que podamos soltar el elemento drag
-//  $(this).addClass( "ui-state-highlight" );
-// e.preventDefault();
-// }
-
-// ondrop = function(e){
-// //Obtenemos los datos a través de la clave contenido, en este caso el id
-// var nom = $('#conp').html();
-// e.dataTransfer.getData("contenido");
-
-//  e.target.appendChild(document.getElementById(id));
-// }
- 
 

@@ -1,23 +1,95 @@
 $(document).ready(function() {
     var posx;
     var posy;
-function salvar (div){
- localStorage.setItem('divPersona', div);
-}
-var person;
-  function cargar(){
-    person= localStorage.getItem('divPersona') || 0;
-        $('#contdrop').append(person);
+    
+    var vector={
+     'vec':[],
+     'cla':[],
+     'posx':[],
+     'posy':[],
+      'id':[]
+    }
 
-  }
-  cargar();
+function salvar (div,no,id){
 
- //var divp= localStorage.divPersona;
-
+       vector.vec.push(div);
+       vector.cla.push(no); 
+       vector.id.push(id);
+       vector.posx.push(div.offsetLeft)
+       vector.posy.push(div.offsetTop)
  
+         // var c= vector.cla[0];
+         // var posx= vector.posx[0];
+         // var posy= vector.posy[0];
+         // var id = vector.id
+   localStorage.setItem('divPersona',vector.cla);
+   localStorage.setItem('posy', vector.posy);
+   localStorage.setItem('posx', vector.posx);
+   localStorage.setItem('id', vector.id);
+}
+     var person;
+    function cargar(){
+     var verifica = localStorage.getItem('divPersona')
+  
+     if(typeof verifica !== 'undefined' && verifica !== null){
+       var divs = localStorage.getItem('divPersona').split(',');
+       var posx = localStorage.getItem('posy').split(',');
+       var posy = localStorage.getItem('posx').split(',');
+       var id = localStorage.getItem('id').split(',');
+        for (var i = 0 ; divs.length > i; i++) {
+           debugger
+
+          var tipoCont = document.getElementById(divs[i]);
+          setDatos(posx[i],posy[i],divs[i],id[i]);  
+       }
+     }
+  }
+    cargar();
+
+function setDatos(x,y,header,id){
+  var tipoDiv;
+   var cont;
+   var dra;
+if(id=='dra'){
+tipoDiv = 'div_persona';
+cont = 'areaes';
+dra= 'draggable=true  ondragstart=" dragStart(event)"'
+
+ $('#panel').slideToggle("slow");
+
+}else{
+tipoDiv = 'div_proyecto';
+cont = 'containerstyle';
+dra = ''
+}
+    $('.'+cont+'').append('<div id="'+id+'" '+dra+' class=" '+tipoDiv+' '+header+' " ></div>');
+    $('.'+header+'').append('<button id="'+header+'" class="delete "></button>');
+    $('.'+header+'').append('<div id="'+header+'"class="headerdivP" >'+header+'</div>');
+    $('.'+header+'').append('<button id="'+header+'" class="edit "></button>');
+
+    if(id=='dra'){
+    $('.'+header+'').append('<button id="mov" ondragstart=" dragStart(event)"  class="move" ></button>');
+    }
+   if(id=='dp'){
+    $('.'+header+'').append('<div id="conp" ondrop="dropConte(event)" ondragover="dropContP(event)" class="divContPe"></div>');
+    }
+   
+   $('.'+header+'').css({
+        'position':'absolute',
+        'left': x,
+        'top':y
+     });
+     habilitarEdit();
+     deletee();
+     dragSelect(); 
+
+}
+ $('.mov').click(function(){
+  alert('a');
+  dragStart();
+ });
   /*realiza la funcion de eliminar y editar los div de personas y proyectos*/
  function habilitarEdit(){
-
 $('.edit').click(function(){
   var nom = $(this).attr("id"); 
   $('#modal3').openModal();
@@ -73,16 +145,16 @@ $('.crearp').click(function(){
      deletee();
      dragSelect(); 
     /*local storage*/
-    var divAtual = document.getElementById('dp');
-    salvar(divAtual);
+     var divAtual = document.getElementById('dp');
+     salvar(divAtual,proyecto,'dp');
 
-    
+   
    }else{
       alert("Este proyecto ya Exite");
      }
      $('.texto').val('');
 
-    // DragDrop("drop", "drop");
+    
 }
    });
    $('.crearP').click(function(){
@@ -96,14 +168,18 @@ $('.crearp').click(function(){
           $('.'+persona+'').append('<button id="'+persona+'" class="delete"></button>'); 
           $('.'+persona+'').append('<div id="'+persona+'" class="headerdivP">'+persona+'</div>');
           $('.'+persona+'').append('<button id="'+persona+'"  class="edit" ></button>');
-          $('.'+persona+'').append('<button  class="move" ></button>');
+          $('.'+persona+'').append('<button id="mov" ondragstart=" dragStart(event)"  class="move" ></button>');
 
             deletee();
-            habilitarEdit();
+            habilitarEdit(); 
+            $('.text').val('');
+             /*local storage*/
+          var divAtual = document.getElementById('dra');
+          salvar(divAtual,persona,'dra');
         }else{
         	alert("Esta persona ya exite");
         }
-     $('.texto').val('');
+    
   }
      
   });
